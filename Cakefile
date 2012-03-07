@@ -27,11 +27,10 @@ handleError = (err) ->
     console.log err.stack
 
 makedir = (dir) ->
-  exec "mkdir -p #{dir}"
-  #try
-  #  fs.mkdirSync dir, 0777
-  #catch e
-  #  null
+  try
+    fs.mkdirSync dir, 0777
+  catch e
+    null
 
 getpaths = (opts) ->
   buildpath = opts.builddir or builddir
