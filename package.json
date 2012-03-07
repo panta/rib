@@ -1,0 +1,25 @@
+{ 
+  "name": "rib", 
+  "description": "CoffeeScript foundation library.", 
+  "version": "0.0.1", 
+  "author": "Marco Pantaleoni <marco.pantaleoni+rib@gmail.com>", 
+  "keywords": ["coffeescript", "library", "framework", "toolbelt", "utility"], 
+  "licenses":
+    [{ 
+      "type": "MIT", 
+      "url": "https://github.com/panta/rib/blob/master/LICENSE"
+    }], 
+  "homepage": "http://github.com/panta/rib.git", 
+  "repository": { 
+    "type" : "git", 
+    "url": "http://github.com/panta/rib.git"
+  }, 
+  "dependencies"  : { "coffee-script" : ">=1.1.2"
+                    },
+  "devDependencies"  : { "coffee-script" : ">=1.1.2"
+                    , "jasmine-node" : ">=1.0.21"
+                    , "jasmine-reporters" : ">=0.2.0"
+                    },
+  "scripts": { "test": "cake test" },
+  "main" : "./dist/rib.js"
+}
