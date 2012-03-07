@@ -1,6 +1,6 @@
 # Rib
 
-## A foundation library for building [CoffeeScript][] ##
+## A foundation library for building [CoffeeScript][] apps ##
 
 Rib consists of a collection of production-quality essential and highly useful classes, mixins and functions.
 
