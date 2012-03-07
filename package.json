@@ -14,12 +14,14 @@
     "type" : "git", 
     "url": "http://github.com/panta/rib.git"
   }, 
+  "bugs": { "url" : "https://github.com/panta/rib/issues"
+          },
   "dependencies"  : { "coffee-script" : ">=1.1.2"
                     },
   "devDependencies"  : { "coffee-script" : ">=1.1.2"
-                    , "jasmine-node" : ">=1.0.21"
-                    , "jasmine-reporters" : ">=0.2.0"
-                    },
+                       , "jasmine-node" : ">=1.0.21"
+                       , "jasmine-reporters" : ">=0.2.0"
+                       },
   "scripts": { "test": "cake test" },
   "main" : "./dist/rib.js"
 }
