@@ -36,7 +36,7 @@ rib = if require? then require("rib") else window.rib
 
 ### Licence ###
 
-Rin is © 2012 Marco Pantaleoni, released under the MIT licence. Use it, fork it.
+Rib is © 2012 Marco Pantaleoni, released under the MIT licence. Use it, fork it.
 
 [CoffeeScript]: http://jashkenas.github.com/coffee-script/
 [Node.js]: http://nodejs.org/
