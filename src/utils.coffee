@@ -62,9 +62,11 @@ module.namespace = namespace
 #   Debug messages
 # -----------------------------------------------------------------------
 
+module.dbgEnable = true
 dbg = (args...) ->
-  args.unshift("[DEBUG]")
-  console?.log?(args...)
+  if module.dbgEnable
+    args.unshift("[DEBUG]")
+    console?.log?(args...)
 module.dbg = dbg
 
 # -----------------------------------------------------------------------
