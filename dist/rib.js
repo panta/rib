@@ -1,5 +1,5 @@
 (function() {
-  var AssertException, MixinA, MixinB, Module, SimpleClass, UID, assert, dbg, module, moduleKeywords, msg, namespace, root,
+  var AssertException, MixinA, MixinB, Module, SimpleClass, UID, UUID, assert, assertEqual, assertSame, dbg, module, moduleKeywords, msg, namespace, root, uidCounter,
     __slice = Array.prototype.slice,
     __indexOf = Array.prototype.indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; },
     __hasProp = Object.prototype.hasOwnProperty,
@@ -32,13 +32,42 @@
   })();
 
   assert = function(exp, message) {
-    if (message == null) message = "Assertion failed";
-    if (!exp) throw new AssertException(message);
+    if (message == null) message = null;
+    if (!exp) {
+      message || (message = "assertion failed: " + exp + " is not true");
+      throw new AssertException(message);
+    }
+  };
+
+  assertEqual = function(v1, v2, message) {
+    var r;
+    if (message == null) message = null;
+    if (typeof _ !== "undefined" && _ !== null) {
+      r = _.isEqual(v1, v2);
+    } else {
+      r = v1 == v2;
+    }
+    if (!r) {
+      message || (message = "assertion failed: " + v1 + " != " + v2);
+      throw new AssertException(message);
+    }
+  };
+
+  assertSame = function(v1, v2, message) {
+    if (message == null) message = null;
+    if (!(v1 === v2)) {
+      message || (message = "assertion failed: " + v1 + " is not " + v2);
+      throw new AssertException(message);
+    }
   };
 
   module.AssertException = AssertException;
 
   module.assert = assert;
+
+  module.assertEqual = assertEqual;
+
+  module.assertSame = assertSame;
 
   namespace = function(target, name, block) {
     var item, top, _i, _len, _ref, _ref2;
@@ -56,20 +85,37 @@
 
   module.namespace = namespace;
 
+  module.dbgEnable = true;
+
   dbg = function() {
     var args;
     args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
-    args.unshift("[DEBUG]");
-    return typeof console !== "undefined" && console !== null ? typeof console.log === "function" ? console.log.apply(console, args) : void 0 : void 0;
+    if (module.dbgEnable) {
+      args.unshift("[DEBUG]");
+      return typeof console !== "undefined" && console !== null ? typeof console.log === "function" ? console.log.apply(console, args) : void 0 : void 0;
+    }
   };
 
   module.dbg = dbg;
 
+  uidCounter = 0;
+
   UID = function(prefix) {
-    return _.uniqueId(prefix);
+    return (prefix || '') + uidCounter++;
   };
 
   module.UID = UID;
+
+  UUID = function() {
+    return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(c) {
+      var r, v;
+      r = Math.random() * 16 | 0;
+      v = (c === "x" ? r : r & 0x3 | 0x8);
+      return v.toString(16);
+    });
+  };
+
+  module.UUID = UUID;
 
   moduleKeywords = ['class', 'extended', 'included', '__name__', '__mixin__', '__mixins__', '__extends__'];
 

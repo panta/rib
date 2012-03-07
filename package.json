@@ -1,7 +1,7 @@
 { 
   "name": "rib", 
   "description": "CoffeeScript foundation library.", 
-  "version": "0.0.1", 
+  "version": "0.0.2", 
   "author": "Marco Pantaleoni <marco.pantaleoni+rib@gmail.com>", 
   "keywords": ["coffeescript", "library", "framework", "toolbelt", "utility"], 
   "licenses":
