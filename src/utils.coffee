@@ -68,10 +68,23 @@ dbg = (args...) ->
 module.dbg = dbg
 
 # -----------------------------------------------------------------------
-#   Simple UID - Unique ID
+#   UID and UUID
 # -----------------------------------------------------------------------
 
+# stolen from underscore (_.uniqueId)
+uidCounter = 0
 UID = (prefix) ->
-  _.uniqueId(prefix)
-
+  (prefix or '') + uidCounter++
 module.UID = UID
+
+# from Robert Kieffer Math.uuid.js:
+#   http://www.broofa.com/2008/09/javascript-uuid-function/
+#   http://www.broofa.com/Tools/Math.uuid.js
+# If you need anything serious, please use:
+#   https://github.com/broofa/node-uuid/blob/master/uuid.js
+UUID = ->
+  "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace /[xy]/g, (c) ->
+    r = Math.random() * 16 | 0
+    v = (if c is "x" then r else (r & 0x3 | 0x8))
+    v.toString 16
+module.UUID = UUID
