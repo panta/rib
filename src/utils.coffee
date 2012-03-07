@@ -10,12 +10,30 @@ class AssertException
   toString: ->
     "AssertException: #{@message}"
 
-assert = (exp, message = "Assertion failed") ->
+assert = (exp, message = null) ->
   if not exp
+    message ||= "assertion failed: #{exp} is not true"
+    throw new AssertException(message)
+
+assertEqual = (v1, v2, message = null) ->
+  if _?
+    r = _.isEqual(v1, v2)
+  else
+    # use loose equality (allow coercions)
+    r = `v1 == v2`
+  if not r
+    message ||= "assertion failed: #{v1} != #{v2}"
+    throw new AssertException(message)
+
+assertSame = (v1, v2, message = null) ->
+  if not (v1 is v2)
+    message ||= "assertion failed: #{v1} is not #{v2}"
     throw new AssertException(message)
 
 module.AssertException = AssertException
 module.assert = assert
+module.assertEqual = assertEqual
+module.assertSame = assertSame
 
 # -----------------------------------------------------------------------
 #   Namespaces
