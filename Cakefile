@@ -3,7 +3,7 @@
 # Copyright (C) 2012 Marco Pantaleoni. All rights reserved.
 
 util           = require('util')
-sys            = require('sys')
+util = require('util')
 fs             = require('fs')
 path           = require('path')
 {spawn, exec}  = require('child_process')
@@ -97,7 +97,7 @@ task 'test', 'Test the app', (options) ->
 
   jasmine.loadHelpersInFolder(specFolder, new RegExp("[-_]helper\.(js|coffee)$"))
   jasmine.executeSpecsInFolder specFolder, (runner, log) ->
-    sys.print('\n');
+    util.print('\n');
     if runner.results().failedCount is 0
       process.exit(0);
     else
