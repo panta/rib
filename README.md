@@ -40,6 +40,6 @@ Rib is © 2012 Marco Pantaleoni, released under the MIT licence. Use it, fork it
 
 [CoffeeScript]: http://jashkenas.github.com/coffee-script/
 [Node.js]: http://nodejs.org/
-[Jasmine]: http://pivotal.github.com/jasmine/
+[Jasmine]: https://jasmine.github.io/
 [rib.js]: https://raw.github.com/panta/rib/master/dist/rib.js
 [rib.min.js]: [https://raw.github.com/panta/rib/master/dist/rib.min.js
